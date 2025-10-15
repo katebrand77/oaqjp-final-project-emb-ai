@@ -1,4 +1,4 @@
-Emotion_detection.py:
+
 # Import the requests library to handle HTTP requests
 import requests  
 # Define a function named emotion_detector that takes a string input (text_to_analyse)
