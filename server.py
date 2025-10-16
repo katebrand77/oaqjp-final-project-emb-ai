@@ -1,5 +1,5 @@
 # Import Flask, render_template, request from the flask pramework package
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,jsonify
 # Import the emotion_detection function from the package created
 from EmotionDetection.emotion_detection import emotion_detector
 
@@ -17,11 +17,15 @@ def sent_analyzer():
     text_to_analyze = request.args.get('textToAnalyze')
     # Pass the text to the emotion detector function and store the response
     response = emotion_detector(text_to_analyze)
-    # Extract the label and score from the response
-
+   
     # Return a formatted string with the sentiment label and score
-    return jsonify(response)
+   # If dominant_emotion is None, return an error message
+    if response.get('dominant_emotion') is None:
+        return "Invalid text! Please try again!", 400
 
+    # Otherwise, return the emotion detection response
+    else:
+        return jsonify(response)
 @app.route("/")
 def render_index_page():
     ''' This function initiates the rendering of the main application
