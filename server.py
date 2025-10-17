@@ -20,12 +20,12 @@ def sent_analyzer():
    
     # Return a formatted string with the sentiment label and score
    # If dominant_emotion is None, return an error message
-    if response.get('dominant_emotion') is None:
-        return "Invalid text! Please try again!", 400
+    if response.get('dominant emotion') is None:
+        return "Invalid text! Please try again!"
 
     # Otherwise, return the emotion detection response
-    else:
-        return jsonify(response)
+     #else:
+    return jsonify(response)
 @app.route("/")
 def render_index_page():
     ''' This function initiates the rendering of the main application
